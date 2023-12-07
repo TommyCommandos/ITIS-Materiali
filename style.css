@@ -1,15 +1,20 @@
 body {
     min-height: 100vh;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
     margin: 0;
-    padding: 24px;
+    padding: 0px 24px;
     box-sizing: border-box;
+    
+    color: white;
     font-family: 'Poppins';
-    background-image: url('./images/background.png');
-    background-size: 100% auto;
+    
+    background-image: url('./images/background.jpg');
+    background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
 }
@@ -24,18 +29,34 @@ a {
     cursor: pointer;
 }
 
-.section {
-    opacity: 0;
-    height: 0vh;
-    transition: 1s;
+.opac {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: -1;
 }
-.section.show {
+.sections {
+    height: 100vh;
+    overflow: hidden;
+}
+.section {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    opacity: 0;
+    max-width: 600px;
+    height: 0vh;
+    transition: 1s;
+    pointer-events: none;
+}
+.section.show {
     opacity: 1;
     height: 100vh;
     transition: 1s;
+    pointer-events: all;
 }
 .section > .back {
     all: unset;
@@ -58,15 +79,17 @@ a {
 }
 
 .buttons {
+    max-width: 600px;
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px 12px;
     justify-content: center;
     align-items: center;
 }
 .buttons > a {
     text-align: center;
-    width: 150px;
+    min-width: 150px;
     color: white;
     font-size: 18px;
     padding: 10px 16px;
